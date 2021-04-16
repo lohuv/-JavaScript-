@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表的定义于实现列表类</title>
+</head>
+<body>
+
+</body>
+<script>
+    //列表的定义：列表是一组有序的数据。每个列表中的数据项称为元素。
+    //列表中包含元素的个数称为列表的 length。
+    // 在内部实 现上，用一个变量 listSize 保存列表中元素的个数。
+    // 可以在列表末尾 append 一个元素，
+    // 也可以在一个给定元素后或列表的起始位置 insert 一个元素。
+    // 使用 remove 方法从列表中 删除元素，
+    // 使用 clear 方法清空列表中所有的元素。
+    // 还可以使用 toString() 方法显示列表中所有的元素
+    // 使用 getElement() 方法显示当前元素。
+
+//实现列表类
+    function List() {
+        this.listSize = 0;
+        this.pos = 0;
+        this.dataStore = []; // 初始化一个空数组来保存列表元素
+        this.clear = clear;
+        this.find = find;
+        this.toString = toString;
+        this.insert = insert;
+        this.append = append;
+        this.remove = remove;
+        this.front = front;
+        this.end = end;
+        this.prev = prev;
+        this.next = next;
+        this.length = length;
+        this.currPos = currPos;
+        this.moveTo = moveTo;
+        this.getElement = getElement;
+        this.length = length;
+        this.contains = contains;
+    }
+    //append方法实现
+    function append(element) {
+        this.dataStore[this.listSize++] = element;
+    }
+    //find 查找元素方法
+    function find(element) {
+        for (let i = 0; i < this.dataStore.length; ++i) {
+            if (this.dataStore[i] === element) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    //remove删除元素
+    function remove(element) {
+        let foundAt = this.find(element);
+        if (foundAt > -1) {
+            this.dataStore.splice(foundAt,1);
+            --this.listSize;
+            return true;
+        }
+        return false;
+    }
+    //length方法
+    function length() {
+        return this.listSize;
+    }
+
+    //insert向列表中插入元素
+
+    function insert(element,after) {
+        const insertPos = this.find(after);
+        if(insertPos>-1){
+            this.dataStore.splice(insertPos+1,0,element);
+            ++this.listSize;
+            return true
+        }
+        return false
+    }
+
+    //clear 清空元素
+    function clear(){
+        delete this.dataStore; //delete用于删除对象的属性
+        this.dataStore = [];
+        this.listSize = this.pos = 0;
+    }
+    //contains 判断给定值是否在列表中
+    function contains(element) {
+        for (let i = 0; i < this.dataStore.length; ++i) {
+            if (this.dataStore[i] == element) {
+                return true; }
+        }
+        return false;
+    }
+
+    //遍历列表
+    function front() {
+        this.pos = 0;
+    }
+    function end() {
+        this.pos = this.listSize-1;
+    }
+    function prev() {
+        if(this.pos>0){
+            --this.pos
+        }
+    }
+    function next() {
+        if(this.pos<this.listSize-1){
+            ++this.pos
+        }
+    }
+
+    function currPos() {
+      return this.pos
+    }
+
+    function moveTo(position) {
+        this.pos = position;
+    }
+    function getElement() {
+        return this.dataStore[this.pos];
+    }
+    //创建一个列表
+    const names = new List();
+    names.append("Clayton");
+    names.append("Raymond");
+    names.append("Cynthia");
+    names.append("Jennifer");
+    names.append("Bryan");
+    names.append("Danny");
+
+    console.log(names);
+    console.log(names.getElement());
+</script>
+</html>

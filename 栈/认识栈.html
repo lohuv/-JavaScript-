@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>栈的认识</title>
+</head>
+<body>
+
+</body>
+<script>
+    //入栈使用 push() 方法，
+    // 出 栈使用 pop() 方法。
+   // peek() 方法则只返回栈顶元素，而不删除它。
+    //push()、pop() 和 peek() 是栈的 3 个主要方法
+    // 但是栈还有其他方法和属性。
+    // clear() 方法 清除栈内所有元素，
+    // length 属性记录栈内元素的个数。
+    // 我们还定义了一个 empty 属性，用 以表示栈内是否含有元素，
+    // 不过使用 length 属性也可以达到同样的目的。
+
+    //实现一个栈
+    function Stack() {
+        this.dataStore = [];//保存栈内元素
+        this.top = 0;
+        this.push = push;
+        this.pop = pop;
+        this.peek = peek;
+        this.length = length;
+        this.clear = clear;
+    }
+
+    //实现push方法
+    function push(element) {
+        this.dataStore[this.top++] = element;
+        //新入栈的元素就被放在 top 的当前值对应的位置，然后再将变量 top 的值加 1，指向下一个位置。
+    }
+
+    //pop()方法和push方法相反
+    function pop() {
+       return  this.dataStore[--this.top]
+    }
+   //peek() 方法返回数组的第 top-1 个位置的元素，即栈顶元素：
+    function peek() {
+        return this.dataStore[this.top-1];
+    }
+    //length ()
+    function length() {
+        return this.top;
+    }
+    //清除栈
+    function clear() {
+        this.top = 0;
+    }
+
+    //测试代码
+    const s = new Stack();
+    s.push("David");
+    s.push("Raymond");
+    s.push("Bryan");
+    document.write("length: " + s.length()+"</br>");
+    document.write(s.peek()+"</br>");
+    const popped = s.pop();
+    document.write("The popped element is: " + popped+"</br>");
+    document.write(s.peek()+"</br>");
+    s.push("Cynthia");
+    document.write(s.peek()+"<br>");
+    s.clear();
+    document.write("length: " + s.length()+"</br>");
+    document.write(s.peek()+"</br>");
+    s.push("Clayton");
+    document.write(s.peek()+"</br>");
+
+
+</script>
+</html>

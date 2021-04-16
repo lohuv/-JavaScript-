@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组迭代器方法</title>
+</head>
+<body>
+
+</body>
+<script>
+    //forEach()
+    function square(num) {
+        document.write(num, num * num+"</br>");
+    }
+    const nums = [1,2,3,4,5,6,7,8,9,10];
+   // nums.forEach(square);
+
+    //every()
+
+    function isEven(num) {
+        return num%2 === 0;
+    }
+    const nums1 = [2,4,6,8,10];
+    const even = nums1.every(isEven);
+    if(even){
+      //  document.write("all number is even"+"</br>")
+    }
+    else {
+      //  document.write("not all number is even"+"</br>")
+    }
+
+    //some() 返回布尔值 只要一个元素满足，就返回true
+
+
+    //reduce方法 不断对累加值数组懂的后续元素调用改函数，
+    // 直到数组中的最后一个元素，最后返回得到的累加值
+    function add(runningTotal,currentValue) {
+    return runningTotal+currentValue
+    }
+
+    const nums2 =[1,2,3,4,5,6,7,8,9,10];
+    const sum = nums.reduce(add);
+    document.write(sum+"</br>")
+
+</script>
+</html>

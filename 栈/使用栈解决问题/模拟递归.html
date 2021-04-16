@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟递归</title>
+</head>
+<body>
+
+</body>
+<script type="module">
+    import {Stack} from "../Stack.js";
+
+    //模拟阶乘递归过程
+    function fact(n) {
+        let s = new Stack();
+        while (n > 1) {
+            s.push(n--);
+        }
+        let product = 1;
+        while (s.length() > 0) {
+            product *= s.pop();
+        }
+        return product;
+    }
+    const product = fact(5); // 显示 120 print(fact(5)); // 显示 120
+    console.log(product);
+</script>
+</html>
